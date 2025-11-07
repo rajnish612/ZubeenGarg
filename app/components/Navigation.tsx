@@ -32,26 +32,46 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
+          <div className="hidden md:flex items-center space-x-8">
+            {/* Main Navigation Items */}
+            <div className="flex space-x-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`group relative px-3 py-2 transition-all duration-300 ${
+                    pathname === item.href
+                      ? 'text-[var(--gold)]'
+                      : 'text-white hover:text-[var(--gold)]'
+                  }`}
+                >
+                  <span className="font-medium">{item.label}</span>
+                  <span className="block text-xs assamese-text opacity-70">
+                    {item.assamese}
+                  </span>
+                  {pathname === item.href && (
+                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[var(--gold)] to-[var(--maroon)]" />
+                  )}
+                </Link>
+              ))}
+            </div>
+            
+            {/* Developer Link - Smaller */}
+            <div className="border-l border-[var(--gold)]/30 pl-6 ml-2">
               <Link
-                key={item.href}
-                href={item.href}
-                className={`group relative px-3 py-2 transition-all duration-300 ${
-                  pathname === item.href
+                href="/developer"
+                className={`text-sm transition-all duration-300 ${
+                  pathname === '/developer'
                     ? 'text-[var(--gold)]'
-                    : 'text-white hover:text-[var(--gold)]'
+                    : 'text-gray-400 hover:text-[var(--gold)]'
                 }`}
               >
-                <span className="font-medium">{item.label}</span>
-                <span className="block text-xs assamese-text opacity-70">
-                  {item.assamese}
+                <span className="font-normal">Developer</span>
+                <span className="block text-xs assamese-text opacity-60">
+                  ডেভেলপাৰ
                 </span>
-                {pathname === item.href && (
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[var(--gold)] to-[var(--maroon)]" />
-                )}
               </Link>
-            ))}
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -91,6 +111,7 @@ const Navigation = () => {
       {isMenuOpen && (
         <div className="md:hidden glass-effect border-t border-[var(--gold)]/20">
           <div className="px-2 pt-2 pb-3 space-y-1">
+            {/* Main Navigation Items */}
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -108,6 +129,24 @@ const Navigation = () => {
                 </span>
               </Link>
             ))}
+            
+            {/* Developer Link - Smaller */}
+            <div className="border-t border-[var(--gold)]/20 pt-2 mt-2">
+              <Link
+                href="/developer"
+                onClick={() => setIsMenuOpen(false)}
+                className={`block px-3 py-2 rounded-md text-sm transition-all duration-200 ${
+                  pathname === '/developer'
+                    ? 'text-[var(--gold)] bg-[var(--gold)]/10'
+                    : 'text-gray-400 hover:text-[var(--gold)] hover:bg-[var(--gold)]/5'
+                }`}
+              >
+                <span className="font-normal">Developer</span>
+                <span className="block text-xs assamese-text opacity-60">
+                  ডেভেলপাৰ
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       )}
