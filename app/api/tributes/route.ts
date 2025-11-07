@@ -5,40 +5,26 @@ import Tribute from '@/models/Tribute';
 // GET - Fetch tributes with pagination
 export async function GET(request: NextRequest) {
   try {
-    console.log('🔍 API Route: Starting tribute fetch...');
-    console.log('🔍 Environment check - MONGO_URI exists:', !!process.env.MONGO_URI);
-    console.log('🔍 Tribute model imported:', !!Tribute);
-    
-    console.log('🔍 Attempting database connection...');
     await dbConnect();
-    console.log('✅ Database connected successfully');
     
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '10');
     const skip = (page - 1) * limit;
 
-    console.log(`🔍 Query params - Page: ${page}, Limit: ${limit}, Skip: ${skip}`);
-
     // Get tributes sorted by creation date (latest first)
-    console.log('🔍 Fetching tributes from database...');
     const tributes = await Tribute.find()
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
       .lean();
-    
-    console.log(`✅ Found ${tributes.length} tributes`);
 
     // Get total count for pagination
-    console.log('🔍 Getting total count...');
     const total = await Tribute.countDocuments();
-    console.log(`✅ Total tributes: ${total}`);
-    
     const totalPages = Math.ceil(total / limit);
     const hasMore = page < totalPages;
 
-    const response = {
+    return NextResponse.json({
       success: true,
       data: {
         tributes,
@@ -50,24 +36,14 @@ export async function GET(request: NextRequest) {
           hasMore
         }
       }
-    };
-
-    console.log('✅ Sending response:', JSON.stringify(response, null, 2));
-    return NextResponse.json(response);
+    });
 
   } catch (error) {
-    console.error('❌ Error in tribute API:', error);
-    console.error('❌ Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : 'No stack trace',
-      name: error instanceof Error ? error.name : 'Unknown error type'
-    });
-    
+    console.error('Error fetching tributes:', error);
     return NextResponse.json(
       { 
         success: false, 
-        error: 'Failed to fetch tributes',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        error: 'Failed to fetch tributes' 
       },
       { status: 500 }
     );
