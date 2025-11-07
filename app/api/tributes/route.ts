@@ -7,6 +7,7 @@ export async function GET(request: NextRequest) {
   try {
     console.log('🔍 API Route: Starting tribute fetch...');
     console.log('🔍 Environment check - MONGO_URI exists:', !!process.env.MONGO_URI);
+    console.log('🔍 Tribute model imported:', !!Tribute);
     
     console.log('🔍 Attempting database connection...');
     await dbConnect();
