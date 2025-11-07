@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 
 interface Photo {
@@ -127,32 +126,6 @@ const photosData: Photo[] = [
 ];
 
 export default function GalleryPage() {
-  const [lightboxPhoto, setLightboxPhoto] = useState<Photo | null>(null);
-
-  const openLightbox = (photo: Photo) => {
-    setLightboxPhoto(photo);
-  };
-
-  const closeLightbox = () => {
-    setLightboxPhoto(null);
-  };
-
-  const nextPhoto = () => {
-    if (lightboxPhoto) {
-      const currentIndex = photosData.findIndex(p => p.id === lightboxPhoto.id);
-      const nextIndex = (currentIndex + 1) % photosData.length;
-      setLightboxPhoto(photosData[nextIndex]);
-    }
-  };
-
-  const prevPhoto = () => {
-    if (lightboxPhoto) {
-      const currentIndex = photosData.findIndex(p => p.id === lightboxPhoto.id);
-      const prevIndex = (currentIndex - 1 + photosData.length) % photosData.length;
-      setLightboxPhoto(photosData[prevIndex]);
-    }
-  };
-
   return (
     <div className="min-h-screen pt-24 pb-8">
       <div className="max-w-7xl mx-auto px-4">
@@ -186,8 +159,7 @@ export default function GalleryPage() {
           {photosData.map((photo) => (
             <div
               key={photo.id}
-              onClick={() => openLightbox(photo)}
-              className="photo-card glass-effect rounded-xl overflow-hidden cursor-pointer group"
+              className="photo-card glass-effect rounded-xl overflow-hidden group"
             >
               {/* Real Image */}
               <div className="aspect-square relative overflow-hidden">
@@ -211,13 +183,6 @@ export default function GalleryPage() {
                   </div>
                 </div>
               </div>
-              
-              {/* Caption */}
-              <div className="p-4">
-                <h3 className="text-white font-semibold mb-1 truncate">{photo.title}</h3>
-                <p className="text-[var(--gold)] text-sm mb-2 assamese-text truncate">{photo.titleAssamese}</p>
-                <p className="text-gray-400 text-xs line-clamp-2">{photo.description}</p>
-              </div>
             </div>
           ))}
         </div>
@@ -228,60 +193,6 @@ export default function GalleryPage() {
             <div className="text-6xl mb-4 text-[var(--gold)]/50">📸</div>
             <h3 className="text-2xl font-bold text-white mb-2">No photos found</h3>
             <p className="text-gray-400 assamese-text">কোনো ফটো পোৱা নগল</p>
-          </div>
-        )}
-
-        {/* Lightbox Modal */}
-        {lightboxPhoto && (
-          <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
-            <div className="relative max-w-6xl max-h-full">
-              {/* Close Button */}
-              <button
-                onClick={closeLightbox}
-                className="absolute top-4 right-4 z-10 w-12 h-12 bg-black/50 hover:bg-[var(--maroon)] rounded-full flex items-center justify-center text-white transition-colors"
-              >
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              {/* Navigation Buttons */}
-              <button
-                onClick={prevPhoto}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-[var(--maroon)] rounded-full flex items-center justify-center text-white transition-colors"
-              >
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              <button
-                onClick={nextPhoto}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 hover:bg-[var(--maroon)] rounded-full flex items-center justify-center text-white transition-colors"
-              >
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-
-              {/* Image */}
-              <div className="relative aspect-video max-h-[70vh] mb-6 rounded-lg overflow-hidden">
-                <Image
-                  src={lightboxPhoto.src}
-                  alt={lightboxPhoto.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 80vw"
-                />
-              </div>
-
-              {/* Caption */}
-              <div className="glass-effect rounded-lg p-6">
-                <h2 className="text-2xl font-bold text-white mb-2">{lightboxPhoto.title}</h2>
-                <h3 className="text-xl text-[var(--gold)] assamese-text mb-3">{lightboxPhoto.titleAssamese}</h3>
-                <p className="text-gray-300 mb-2">{lightboxPhoto.description}</p>
-              </div>
-            </div>
           </div>
         )}
       </div>
