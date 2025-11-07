@@ -138,9 +138,6 @@ export default function BiographyPage() {
           <blockquote className="text-lg text-white/90 italic max-w-3xl mx-auto">
             "Music is the language of the soul, and through my songs, I want to speak to every heart"
           </blockquote>
-          <p className="text-[var(--gold)] mt-2 assamese-text">
-            "সংগীত হৈছে আত্মাৰ ভাষা, মোৰ গানেৰে মই প্ৰতিটো হৃদয়ৰ লগত কথা পাতিব খোজো"
-          </p>
         </div>
 
         {/* Stats Section */}
@@ -193,12 +190,10 @@ export default function BiographyPage() {
                   </div>
                   
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
-                  <h4 className="text-lg text-[var(--gold)] assamese-text mb-3">{event.titleAssamese}</h4>
+                  <h3 className="text-xl font-bold text-white mb-4">{event.title}</h3>
                   
                   {/* Description */}
-                  <p className="text-gray-300 mb-3 leading-relaxed">{event.description}</p>
-                  <p className="text-[var(--gold)]/80 assamese-text text-sm leading-relaxed">{event.descriptionAssamese}</p>
+                  <p className="text-gray-300 leading-relaxed">{event.description}</p>
                   
                   {/* Image placeholder */}
                   {event.image && (
@@ -243,9 +238,6 @@ export default function BiographyPage() {
             <blockquote className="text-2xl text-white font-light italic mb-6">
               "My music is my message to the world about the beauty of Assam and its people"
             </blockquote>
-            <p className="text-xl text-[var(--gold)] assamese-text">
-              "মোৰ সংগীত অসম আৰু ইয়াৰ জনগণৰ সৌন্দৰ্যৰ বিষয়ে বিশ্বৰ ওচৰত মোৰ বাৰ্তা"
-            </p>
             <div className="text-[var(--gold)]/60 mt-4">- Zubeen Garg</div>
           </div>
         </section>

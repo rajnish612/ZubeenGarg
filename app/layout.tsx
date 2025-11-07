@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Serif_Devanagari } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
-import MusicPlayer from "./components/MusicPlayer";
+
 
 const inter = Inter({
   variable: "--font-inter",
