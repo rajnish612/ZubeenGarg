@@ -43,7 +43,11 @@ interface YouTubeSearchResponse {
 }
 
 // YouTube API configuration
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY || 'AIzaSyAwrzeaqBZ2aNjj7EV3VguE5TXRK_5b7Vc';
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+
+if (!API_KEY) {
+  throw new Error('Missing YouTube API key. Please set NEXT_PUBLIC_API_KEY in your .env file.');
+}
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 // Function to fetch songs from YouTube API with pagination
