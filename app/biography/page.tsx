@@ -146,20 +146,20 @@ export default function BiographyPage() {
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           <div className="glass-effect rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-gradient mb-2">50+</div>
+            <div className="text-3xl font-bold text-gradient mb-2">33</div>
             <div className="text-[var(--gold)] text-sm">Years in Music</div>
           </div>
           <div className="glass-effect rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-gradient mb-2">500+</div>
-            <div className="text-[var(--gold)] text-sm">Songs Composed</div>
+            <div className="text-3xl font-bold text-gradient mb-2">40,000+</div>
+            <div className="text-[var(--gold)] text-sm">Songs Recorded</div>
           </div>
           <div className="glass-effect rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-gradient mb-2">25+</div>
-            <div className="text-[var(--gold)] text-sm">Films Acted</div>
-          </div>
-          <div className="glass-effect rounded-xl p-6 text-center">
-            <div className="text-3xl font-bold text-gradient mb-2">5</div>
+            <div className="text-3xl font-bold text-gradient mb-2">40+</div>
             <div className="text-[var(--gold)] text-sm">Languages Sung</div>
+          </div>
+          <div className="glass-effect rounded-xl p-6 text-center">
+            <div className="text-3xl font-bold text-gradient mb-2">∞</div>
+            <div className="text-[var(--gold)] text-sm">Musical Legacy</div>
           </div>
         </div>
 

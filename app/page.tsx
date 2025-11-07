@@ -5,22 +5,27 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90 z-10" />
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: "url('/images/background.jpg')",
+          }}
+        />
         
-        {/* Background image placeholder */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--maroon)]/30 to-[var(--dark-maroon)]/30" />
+        {/* Background overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/90 z-10" />
         
         {/* Hero Content */}
         <div className="relative z-20 text-center max-w-4xl mx-auto px-4">
-          {/* Portrait placeholder */}
+          {/* Portrait placeholder
           <div className="mb-8 float">
             <div className="w-72 h-72 mx-auto rounded-full bg-gradient-to-b from-[var(--gold)] to-[var(--maroon)] p-2 glow-gold">
               <div className="w-full h-full rounded-full bg-gradient-to-b from-gray-600 to-gray-800 flex items-center justify-center text-6xl text-[var(--gold)]">
                 ZG
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Name */}
           <div className="mb-6 fade-in-up">
@@ -87,17 +92,17 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center glass-effect rounded-xl p-6">
-              <div className="text-4xl font-bold text-gradient mb-2">500+</div>
+              <div className="text-4xl font-bold text-gradient mb-2">40,000+</div>
               <div className="text-[var(--gold)] font-medium">Songs</div>
               <div className="text-white/70 text-sm assamese-text">গান</div>
             </div>
             <div className="text-center glass-effect rounded-xl p-6">
-              <div className="text-4xl font-bold text-gradient mb-2">25+</div>
+              <div className="text-4xl font-bold text-gradient mb-2">33</div>
               <div className="text-[var(--gold)] font-medium">Years</div>
               <div className="text-white/70 text-sm assamese-text">বছৰ</div>
             </div>
             <div className="text-center glass-effect rounded-xl p-6">
-              <div className="text-4xl font-bold text-gradient mb-2">5</div>
+              <div className="text-4xl font-bold text-gradient mb-2">40+</div>
               <div className="text-[var(--gold)] font-medium">Languages</div>
               <div className="text-white/70 text-sm assamese-text">ভাষা</div>
             </div>
